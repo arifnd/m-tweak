@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=M Tweak
+Comment=Manokwari theme manager
+GenericName[id]=Manajer tema untuk Manokwari
+TryExec=m-tweak
+Exec=m-tweak
+Icon=m-tweak
+Categories=GTK;System;Settings;
+Encoding=UTF-8
+StartupNotify=false
