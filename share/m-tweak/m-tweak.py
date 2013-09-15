@@ -31,7 +31,7 @@
 from gi.repository import Gtk
 from gi.repository import GObject
 
-class Theme (GObject.GObject):
+class Theme(GObject.GObject):
 	name = GObject.property(type=str)
 	creator = GObject.property(type=str)
 	version = GObject.property(type=str)
@@ -42,12 +42,14 @@ class Theme (GObject.GObject):
 	def __repr__(self):
 		return "%s, %s" % (self.get_property("name"), self.get_property("version"))
 
-class MTweak (Gtk.Window):
+class MTweak(Gtk.Window):
 
 	def __init__(self, *args, **kwargs):
 		Gtk.Window.__init__(self, *args, **kwargs)
-		self.set_title("M-Tweak")
+		self.set_border_width(10)
 		self.set_size_request(400, 400)
+		#self.set_position(GTK_WIN_POS_CENTER)
+		self.set_title("M-Tweak")
 		self.connect("destroy", Gtk.main_quit)
 		self.create_widgets()
 		self.get_theme()
@@ -76,20 +78,42 @@ class MTweak (Gtk.Window):
 		column.set_cell_data_func(cell, self.get_version)
 		self.treeview.append_column(column)
 
-		vbox = Gtk.VBox()
-		self.add(vbox)
-		vbox.pack_start(self.treeview, True, True, 0)
-
 		btnApply = Gtk.Button("Apply Theme")
-		btnApply.connect("clicked", self.retrieve_element)
-		vbox.pack_start(btnApply, False, False, 5)
+		btnApply.connect("clicked", self.dialog_confirm)
+		#btnApply.connect("clicked", self.retrieve_element)
+
+		btnInstall = Gtk.Button("Install New Theme")
+		btnInstall.connect("clicked", self.theme_browse)
+
+		btnClose = Gtk.Button("Close")
+		btnClose.connect("clicked", Gtk.main_quit)
+
+		buttonBox = Gtk.HButtonBox()
+		buttonBox.set_spacing(15)
+		buttonBox.add(btnApply)
+		buttonBox.add(btnInstall)
+		buttonBox.add(btnClose)
+
+		themeBox = Gtk.VBox()
+		themeBox.pack_start(self.treeview, True, True, 0)
+		themeBox.pack_start(buttonBox, False, False, 5)
+
+		aboutBox = Gtk.VBox()
+
+		tab = Gtk.Notebook()
+		label = Gtk.Label("Themes")
+		tab.append_page(themeBox, label)
+		label = Gtk.Label("About")
+		tab.append_page(aboutBox, label)
+
+		self.add(tab)
 
 	def get_name(self, column, cell, model, iter, data):
 		cell.set_property('text', self.treestore.get_value(iter, 0).name)
-		
+
 	def get_creator(self, column, cell, model, iter, data):
 		cell.set_property('text', self.treestore.get_value(iter, 0).creator)
-		
+
 	def get_version(self, column, cell, model, iter, data):
 		cell.set_property('text', self.treestore.get_value(iter, 0).version)
 
@@ -105,6 +129,42 @@ class MTweak (Gtk.Window):
 		model, treeiter = self.treeview.get_selection().get_selected()
 		if treeiter:
 			print "You selected", model[treeiter][0]
+
+	def theme_browse(self, widget):
+		dialog = Gtk.FileChooserDialog("Please choose a file", self,
+			Gtk.FileChooserAction.OPEN,
+			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+			 Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+
+		self.theme_filter(dialog)
+
+		response = dialog.run()
+		if response == Gtk.ResponseType.OK:
+			print "Open clicked"
+			print "File selected: " + dialog.get_filename()
+		elif response == Gtk.ResponseType.CANCEL:
+			print "Cancel clicked"
+
+		dialog.destroy()
+
+	def theme_filter(self, dialog):
+		filter_any = Gtk.FileFilter()
+		filter_any.set_name("Theme files")
+		filter_any.add_pattern("*.zip")
+		dialog.add_filter(filter_any)
+
+	def dialog_confirm(self, widget):
+		dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.QUESTION,
+			Gtk.ButtonsType.YES_NO, "Are you want to change theme")
+		dialog.format_secondary_text(
+			"After you press OK button theme wil change.")
+		response = dialog.run()
+		if response == Gtk.ResponseType.YES:
+			print "QUESTION dialog closed by clicking YES button"
+		elif response == Gtk.ResponseType.NO:
+			print "QUESTION dialog closed by clicking NO button"
+
+		dialog.destroy()
 
 if __name__ == "__main__":
 	GObject.type_register(Theme)
