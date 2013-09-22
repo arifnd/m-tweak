@@ -1,6 +1,8 @@
 #!/usr/bin/python
 #
-#	m-tweak.py
+#	M Tweak - Manokwari Theme Manager
+#	Version		: 0.1
+#	Las Update	: 2013/09/21
 #
 #	Powered by BlankOn Linux Developer 2013
 #
@@ -11,6 +13,7 @@
 #	Some code based on:
 #	* http://w.blankon.in/7Z
 #	* http://w.blankon.in/8Z
+#	* http://w.blankon.in/j_
 #
 #  M Tweak is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -28,8 +31,13 @@
 #  MA 02110-1301, USA.
 #
 
+import gettext
+
 from gi.repository import Gtk
 from gi.repository import GObject
+
+t = gettext.translation('m-tweak', '/usr/share/locale')
+_ = t.ugettext
 
 class Theme(GObject.GObject):
 	name = GObject.property(type=str)
@@ -45,11 +53,12 @@ class Theme(GObject.GObject):
 class MTweak(Gtk.Window):
 
 	def __init__(self, *args, **kwargs):
+
 		Gtk.Window.__init__(self, *args, **kwargs)
 		self.set_border_width(10)
 		self.set_size_request(400, 400)
 		#self.set_position(GTK_WIN_POS_CENTER)
-		self.set_title("M-Tweak")
+		self.set_title(_("Manokwari Theme Manager"))
 		self.connect("destroy", Gtk.main_quit)
 		self.create_widgets()
 		self.get_theme()
@@ -61,31 +70,31 @@ class MTweak(Gtk.Window):
 		self.treeview.set_model(self.treestore)
 
 		cell = Gtk.CellRendererText()
-		column = Gtk.TreeViewColumn("Theme Name")
+		column = Gtk.TreeViewColumn(_("Theme Name"))
 		column.pack_start(cell, True)
 		column.set_cell_data_func(cell, self.get_name)
 		self.treeview.append_column(column)
 
 		cell = Gtk.CellRendererText()
-		column = Gtk.TreeViewColumn("Creator")
+		column = Gtk.TreeViewColumn(_("Creator"))
 		column.pack_start(cell, True)
 		column.set_cell_data_func(cell, self.get_creator)
 		self.treeview.append_column(column)
 
 		cell = Gtk.CellRendererText()
-		column = Gtk.TreeViewColumn("Version")
+		column = Gtk.TreeViewColumn(_("Version"))
 		column.pack_start(cell, True)
 		column.set_cell_data_func(cell, self.get_version)
 		self.treeview.append_column(column)
 
-		btnApply = Gtk.Button("Apply Theme")
+		btnApply = Gtk.Button(_("Apply Theme"))
 		btnApply.connect("clicked", self.dialog_confirm)
 		#btnApply.connect("clicked", self.retrieve_element)
 
-		btnInstall = Gtk.Button("Install New Theme")
+		btnInstall = Gtk.Button(_("Install New Theme"))
 		btnInstall.connect("clicked", self.theme_browse)
 
-		btnClose = Gtk.Button("Close")
+		btnClose = Gtk.Button(_("Close"))
 		btnClose.connect("clicked", Gtk.main_quit)
 
 		buttonBox = Gtk.HButtonBox()
@@ -101,9 +110,9 @@ class MTweak(Gtk.Window):
 		aboutBox = Gtk.VBox()
 
 		tab = Gtk.Notebook()
-		label = Gtk.Label("Themes")
+		label = Gtk.Label(_("Themes"))
 		tab.append_page(themeBox, label)
-		label = Gtk.Label("About")
+		label = Gtk.Label(_("About"))
 		tab.append_page(aboutBox, label)
 
 		self.add(tab)
@@ -131,7 +140,7 @@ class MTweak(Gtk.Window):
 			print "You selected", model[treeiter][0]
 
 	def theme_browse(self, widget):
-		dialog = Gtk.FileChooserDialog("Please choose a file", self,
+		dialog = Gtk.FileChooserDialog(_("Please choose a file"), self,
 			Gtk.FileChooserAction.OPEN,
 			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
 			 Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
@@ -149,20 +158,20 @@ class MTweak(Gtk.Window):
 
 	def theme_filter(self, dialog):
 		filter_any = Gtk.FileFilter()
-		filter_any.set_name("Theme files")
+		filter_any.set_name(_("Theme files"))
 		filter_any.add_pattern("*.zip")
 		dialog.add_filter(filter_any)
 
 	def dialog_confirm(self, widget):
 		dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.QUESTION,
-			Gtk.ButtonsType.YES_NO, "Are you want to change theme")
+			Gtk.ButtonsType.YES_NO, _("Are you want to change theme"))
 		dialog.format_secondary_text(
-			"After you press OK button theme wil change.")
+			_("After you press OK button theme will change."))
 		response = dialog.run()
 		if response == Gtk.ResponseType.YES:
-			print "QUESTION dialog closed by clicking YES button"
+			print "YES respone"
 		elif response == Gtk.ResponseType.NO:
-			print "QUESTION dialog closed by clicking NO button"
+			print "NO respone"
 
 		dialog.destroy()
 

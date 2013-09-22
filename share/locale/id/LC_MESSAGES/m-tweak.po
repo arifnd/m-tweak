@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"POT-Creation-Date: 2013-09-22 15:55+WIT\n"
+"PO-Revision-Date: 2013-09-22 16:14+0700\n"
+"Last-Translator: Ari Effendi <zerosix06@gmail.com>\n"
+"Language-Team: Blankon Developer <dev-blankon@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Poedit-Language: Indonesian\n"
+"X-Poedit-Country: INDONESIA\n"
+
+#: m-tweak.py:59
+msgid "Manokwari Theme Manager"
+msgstr "Manajer Tema Manokwari"
+
+#: m-tweak.py:71
+msgid "Theme Name"
+msgstr "Nama Tema"
+
+#: m-tweak.py:77
+msgid "Creator"
+msgstr "Pembuat"
+
+#: m-tweak.py:83
+msgid "Version"
+msgstr "Versi"
+
+#: m-tweak.py:88
+msgid "Apply Theme"
+msgstr "Terapkan Tema"
+
+#: m-tweak.py:92
+msgid "Install New Theme"
+msgstr "Pasang Tema Baru"
+
+#: m-tweak.py:95
+msgid "Close"
+msgstr "Tutup"
+
+#: m-tweak.py:111
+msgid "Themes"
+msgstr "Tema"
+
+#: m-tweak.py:113
+msgid "About"
+msgstr "Tentang"
+
+#: m-tweak.py:141
+msgid "Please choose a file"
+msgstr "Silahkan pilih berkas"
+
+#: m-tweak.py:159
+msgid "Theme files"
+msgstr "Berkas tema"
+
+#: m-tweak.py:165
+msgid "Are you want to change theme"
+msgstr "Apakah Anda akan mengganti tema"
+
+#: m-tweak.py:167
+msgid "After you press OK button theme will change."
+msgstr "Setelah Anda menekan tombol OK tema akan berubah"
+

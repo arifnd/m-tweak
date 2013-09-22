@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-09-22 16:08+WIT\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: m-tweak.py:59
+msgid "Manokwari Theme Manager"
+msgstr ""
+
+#: m-tweak.py:71
+msgid "Theme Name"
+msgstr ""
+
+#: m-tweak.py:77
+msgid "Creator"
+msgstr ""
+
+#: m-tweak.py:83
+msgid "Version"
+msgstr ""
+
+#: m-tweak.py:88
+msgid "Apply Theme"
+msgstr ""
+
+#: m-tweak.py:92
+msgid "Install New Theme"
+msgstr ""
+
+#: m-tweak.py:95
+msgid "Close"
+msgstr ""
+
+#: m-tweak.py:111
+msgid "Themes"
+msgstr ""
+
+#: m-tweak.py:113
+msgid "About"
+msgstr ""
+
+#: m-tweak.py:141
+msgid "Please choose a file"
+msgstr ""
+
+#: m-tweak.py:159
+msgid "Theme files"
+msgstr ""
+
+#: m-tweak.py:165
+msgid "Are you want to change theme"
+msgstr ""
+
+#: m-tweak.py:167
+msgid "After you press OK button theme will change."
+msgstr ""
+
