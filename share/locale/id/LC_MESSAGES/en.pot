@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-22 16:08+WIT\n"
+"POT-Creation-Date: 2013-09-29 13:58+WIT\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,55 +15,63 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: m-tweak.py:59
+#: ../../../m-tweak/m-tweak.py:68 ../../../m-tweak/m-tweak.py:121
 msgid "Manokwari Theme Manager"
 msgstr ""
 
-#: m-tweak.py:71
+#: ../../../m-tweak/m-tweak.py:82
 msgid "Theme Name"
 msgstr ""
 
-#: m-tweak.py:77
+#: ../../../m-tweak/m-tweak.py:88
 msgid "Creator"
 msgstr ""
 
-#: m-tweak.py:83
+#: ../../../m-tweak/m-tweak.py:94
 msgid "Version"
 msgstr ""
 
-#: m-tweak.py:88
+#: ../../../m-tweak/m-tweak.py:99
 msgid "Apply Theme"
 msgstr ""
 
-#: m-tweak.py:92
+#: ../../../m-tweak/m-tweak.py:103
 msgid "Install New Theme"
 msgstr ""
 
-#: m-tweak.py:95
+#: ../../../m-tweak/m-tweak.py:106
 msgid "Close"
 msgstr ""
 
-#: m-tweak.py:111
+#: ../../../m-tweak/m-tweak.py:122
+msgid "This application can manage, add, remove Manokwari theme"
+msgstr ""
+
+#: ../../../m-tweak/m-tweak.py:126
+msgid "Developer"
+msgstr ""
+
+#: ../../../m-tweak/m-tweak.py:139
 msgid "Themes"
 msgstr ""
 
-#: m-tweak.py:113
+#: ../../../m-tweak/m-tweak.py:141
 msgid "About"
 msgstr ""
 
-#: m-tweak.py:141
+#: ../../../m-tweak/m-tweak.py:169
 msgid "Please choose a file"
 msgstr ""
 
-#: m-tweak.py:159
+#: ../../../m-tweak/m-tweak.py:187
 msgid "Theme files"
 msgstr ""
 
-#: m-tweak.py:165
+#: ../../../m-tweak/m-tweak.py:193
 msgid "Are you want to change theme"
 msgstr ""
 
-#: m-tweak.py:167
+#: ../../../m-tweak/m-tweak.py:195
 msgid "After you press OK button theme will change."
 msgstr ""
 

@@ -14,6 +14,8 @@
 #	* http://w.blankon.in/7Z
 #	* http://w.blankon.in/8Z
 #	* http://w.blankon.in/j_
+#	* http://w.blankon.in/s_
+#	* http://w.blankon.in/t_
 #
 #  M Tweak is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -32,11 +34,23 @@
 #
 
 import gettext
+import os
+import sys
 
 from gi.repository import Gtk
 from gi.repository import GObject
 
-t = gettext.translation('m-tweak', '/usr/share/locale')
+if os.geteuid() != 0:
+	print "You not running as root!"
+	sys.exit(1)
+
+app_name = "m-tweak"
+app_version = "0.1"
+app_developer = '''Ari Effendi <zerosix06@gmail.com>
+
+'''
+
+t = gettext.translation(app_name, '/usr/share/locale')
 _ = t.ugettext
 
 class Theme(GObject.GObject):
@@ -57,8 +71,10 @@ class MTweak(Gtk.Window):
 		Gtk.Window.__init__(self, *args, **kwargs)
 		self.set_border_width(10)
 		self.set_size_request(400, 400)
-		#self.set_position(GTK_WIN_POS_CENTER)
+		self.set_position(Gtk.WindowPosition.CENTER)
 		self.set_title(_("Manokwari Theme Manager"))
+		self.icon = Gtk.IconTheme.get_default().load_icon(app_name, 64, 0)
+		self.set_icon(self.icon)
 		self.connect("destroy", Gtk.main_quit)
 		self.create_widgets()
 		self.get_theme()
@@ -107,7 +123,24 @@ class MTweak(Gtk.Window):
 		themeBox.pack_start(self.treeview, True, True, 0)
 		themeBox.pack_start(buttonBox, False, False, 5)
 
+		appIcon = Gtk.Image()
+		appIcon.set_from_pixbuf(self.icon)
+		appName = Gtk.Label(_("Manokwari Theme Manager")+" "+app_version)
+		appDesc = Gtk.Label(_("This application can manage, add, remove Manokwari theme"))
+		appCopy = Gtk.Label("(c) 2013 Blankon Linux")
+		appUrl = Gtk.Label()
+		appUrl.set_markup("<a href='http://www.blankonlinux.or.id'>blankonlinux.or.id</a>")
+		appDev = Gtk.Label(_("Developer"))
+		appPerson = Gtk.Label(app_developer)
+
 		aboutBox = Gtk.VBox()
+		aboutBox.pack_start(appIcon, False, False, 5)
+		aboutBox.pack_start(appName, False, False, 0)
+		aboutBox.pack_start(appDesc, False, False, 0)
+		aboutBox.pack_start(appCopy, False, False, 0)
+		aboutBox.pack_start(appUrl, False, False, 0)
+		aboutBox.pack_start(appDev, False, False, 5)
+		aboutBox.pack_start(appPerson, False, False, 5)
 
 		tab = Gtk.Notebook()
 		label = Gtk.Label(_("Themes"))

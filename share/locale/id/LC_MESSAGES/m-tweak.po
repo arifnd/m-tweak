@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "POT-Creation-Date: 2013-09-22 15:55+WIT\n"
-"PO-Revision-Date: 2013-09-22 16:14+0700\n"
+"PO-Revision-Date: 2013-09-29 14:07+0700\n"
 "Last-Translator: Ari Effendi <zerosix06@gmail.com>\n"
-"Language-Team: Blankon Developer <dev-blankon@googlegroups.com>\n"
+"Language-Team: Blankon Developer <blankon-dev@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,55 +16,64 @@ msgstr ""
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-Country: INDONESIA\n"
 
-#: m-tweak.py:59
+#: m-tweak.py:68
+#: m-tweak.py:121
 msgid "Manokwari Theme Manager"
 msgstr "Manajer Tema Manokwari"
 
-#: m-tweak.py:71
+#: m-tweak.py:82
 msgid "Theme Name"
 msgstr "Nama Tema"
 
-#: m-tweak.py:77
+#: m-tweak.py:88
 msgid "Creator"
 msgstr "Pembuat"
 
-#: m-tweak.py:83
+#: m-tweak.py:94
 msgid "Version"
 msgstr "Versi"
 
-#: m-tweak.py:88
+#: m-tweak.py:99
 msgid "Apply Theme"
 msgstr "Terapkan Tema"
 
-#: m-tweak.py:92
+#: m-tweak.py:103
 msgid "Install New Theme"
 msgstr "Pasang Tema Baru"
 
-#: m-tweak.py:95
+#: m-tweak.py:106
 msgid "Close"
 msgstr "Tutup"
 
-#: m-tweak.py:111
+#: m-tweak.py:122
+msgid "This application can manage, add, remove Manokwari theme"
+msgstr "Aplikasi ini dapat mengelola, menambah, menghapus tema Manokwari"
+
+#: m-tweak.py:126
+msgid "Developer"
+msgstr "Pengembang"
+
+#: m-tweak.py:139
 msgid "Themes"
 msgstr "Tema"
 
-#: m-tweak.py:113
+#: m-tweak.py:141
 msgid "About"
 msgstr "Tentang"
 
-#: m-tweak.py:141
+#: m-tweak.py:169
 msgid "Please choose a file"
 msgstr "Silahkan pilih berkas"
 
-#: m-tweak.py:159
+#: m-tweak.py:187
 msgid "Theme files"
 msgstr "Berkas tema"
 
-#: m-tweak.py:165
+#: m-tweak.py:193
 msgid "Are you want to change theme"
 msgstr "Apakah Anda akan mengganti tema"
 
-#: m-tweak.py:167
+#: m-tweak.py:195
 msgid "After you press OK button theme will change."
 msgstr "Setelah Anda menekan tombol OK tema akan berubah"
 
