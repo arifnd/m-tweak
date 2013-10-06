@@ -40,9 +40,11 @@ import sys
 from gi.repository import Gtk
 from gi.repository import GObject
 
-if os.geteuid() != 0:
-	print "You not running as root!"
-	sys.exit(1)
+from theme import Theme
+
+#if os.geteuid() != 0:
+#	print "You not running as root!"
+#	sys.exit(1)
 
 app_name = "m-tweak"
 app_version = "0.1"
@@ -52,17 +54,6 @@ app_developer = '''Ari Effendi <zerosix06@gmail.com>
 
 t = gettext.translation(app_name, '/usr/share/locale')
 _ = t.ugettext
-
-class Theme(GObject.GObject):
-	name = GObject.property(type=str)
-	creator = GObject.property(type=str)
-	version = GObject.property(type=str)
-
-	def __init__(self):
-		GObject.GObject.__init__(self)
-
-	def __repr__(self):
-		return "%s, %s" % (self.get_property("name"), self.get_property("version"))
 
 class MTweak(Gtk.Window):
 
@@ -105,7 +96,6 @@ class MTweak(Gtk.Window):
 
 		btnApply = Gtk.Button(_("Apply Theme"))
 		btnApply.connect("clicked", self.dialog_confirm)
-		#btnApply.connect("clicked", self.retrieve_element)
 
 		btnInstall = Gtk.Button(_("Install New Theme"))
 		btnInstall.connect("clicked", self.theme_browse)
@@ -158,19 +148,27 @@ class MTweak(Gtk.Window):
 
 	def get_version(self, column, cell, model, iter, data):
 		cell.set_property('text', self.treestore.get_value(iter, 0).version)
+		
+	def get_folder(self, column, cell, model, iter, data):
+		cell.set_property('text', self.treestore.get_value(iter, 0).folder)
+
+	def get_active(self, column, cell, model, iter, data):
+		cell.set_property('text', self.treestore.get_value(iter, 0).active)
 
 	def get_theme(self):
-		for name, creator, version in [("Goolge", "Remon", "1.0"), ("Embun", "Dono", "0.1")]:
-			t = Theme()
-			t.name = name
-			t.creator = creator
-			t.version = version
-			self.treestore.append(None, (t,))
+		t = Theme()
+		for name, creator, version, folder, active in t.theme_list():
+			i = Theme()
+			i.name = name
+			i.creator = creator
+			i.version = version
+			i.folder = folder
+			i.active = active
+			self.treestore.append(None, (i,))
 
-	def retrieve_element(self, widget):
+	def retrieve_element(self):
 		model, treeiter = self.treeview.get_selection().get_selected()
-		if treeiter:
-			print "You selected", model[treeiter][0]
+		return model[treeiter][0]
 
 	def theme_browse(self, widget):
 		dialog = Gtk.FileChooserDialog(_("Please choose a file"), self,
@@ -202,7 +200,7 @@ class MTweak(Gtk.Window):
 			_("After you press OK button theme will change."))
 		response = dialog.run()
 		if response == Gtk.ResponseType.YES:
-			print "YES respone"
+			print self.retrieve_element()
 		elif response == Gtk.ResponseType.NO:
 			print "NO respone"
 
